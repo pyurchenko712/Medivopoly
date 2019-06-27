@@ -5,6 +5,7 @@ import java.awt.Toolkit;
 import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -20,11 +21,18 @@ public class Medivopoly extends Application
         //GET FULL SCREEN SIZE
         double screenHeight = 960;
         double screenWidth = 1800 ;
-        //Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        //screenHeight = screenSize.getHeight();
-        //screenWidth = screenSize.getWidth();
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        screenHeight = screenSize.getHeight() - 100;
+        screenWidth = screenSize.getWidth();
+        BorderPane mainMenuRoot = new BorderPane();
+        Button newGame = new Button("New Game");
+        Button loadGame = new Button("Load Game");
+        Button exitGame = new Button("Exit Game");
+        mainMenuRoot.setTop(newGame);
+        mainMenuRoot.setCenter(loadGame);
+        mainMenuRoot.setBottom(exitGame);
         
-        
+       
         //Set Up of the main border pane that contains the game and all of its elements
         BorderPane gameRoot = new BorderPane();
         HBox topRow = new HBox();
@@ -44,10 +52,15 @@ public class Medivopoly extends Application
         setRightTiles(rightColumn, tiles);
         
         //DON'T TOUCH
-        Scene scene = new Scene(gameRoot);        
+        Scene scene = new Scene(mainMenuRoot, screenWidth, screenHeight);        
         primaryStage.setTitle("Medivopoly");
         primaryStage.setScene(scene);
         primaryStage.show();
+        
+         newGame.setOnAction( e -> {
+            scene.setRoot(gameRoot);
+        });
+        
     }
     public static void setTopTiles(HBox topRow, Tile[] tiles)
     {
