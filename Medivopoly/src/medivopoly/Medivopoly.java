@@ -46,10 +46,7 @@ public class Medivopoly extends Application
                 
         Tile[] tiles = new Tile[24];
         
-        setTopTiles(topRow, tiles);
-        setBottomTiles(bottomRow, tiles);
-        setLeftTiles(leftColumn, tiles);
-        setRightTiles(rightColumn, tiles);
+        setTiles(topRow, bottomRow, leftColumn, rightColumn, tiles);
         
         //DON'T TOUCH
         Scene scene = new Scene(mainMenuRoot, screenWidth, screenHeight);        
@@ -62,36 +59,44 @@ public class Medivopoly extends Application
         });
         
     }
-    public static void setTopTiles(HBox topRow, Tile[] tiles)
+    public static void setTiles(HBox topRow, HBox bottomRow, VBox leftColumn, VBox rightColumn, Tile[] tiles)
     {
-        Tile throneRoom = new Tile("resources\\throne_room.jpg", "Throne Room");
-        Tile kingsCastle = new Tile("resources\\kings_castle.jpg", "Kings Castle");
-        Tile capitalCity = new Tile("resources\\capital_city.jpg", "Capital City");
-        Tile highlands = new Tile("resources\\highlands.jpg", "Highlands");
-        Tile mountainCastle = new Tile("resources\\mountain_castle.jpg", "Mountain Castle");
-        Tile mountainVillage = new Tile("resources\\mountain_village.jpg", "Mountain Village");
-        Tile wildlands = new Tile("resources\\wildlands.jpg", "Wildlands");
+        Tile throneRoom = new Tile("resources\\throne_room.jpg", "Throne Room", false, 0);
+        Tile smallFarm = new Tile("resources\\small_farm.jpg", "Small Farm", true, 100);
+        Tile wheatField = new Tile("resources\\wheat_field.jpg", "Wheat Field", true, 200);
+        Tile windmill = new Tile("resources\\windmill.jpg", "Windmill", true, 300);
+        Tile inn = new Tile("resources\\inn.jpg", "Inn", true, 400);
+        Tile smallTown = new Tile("resources\\small_town.jpg", "Small Town", true, 500);
+        Tile mercenaryCamp = new Tile("resources\\mercenary_camp.jpg", "Mercenary Camp", false, 0);
+        Tile lighthouse = new Tile("resources\\lighthouse.jpg", "Lighthouse", true, 700);
+        Tile port = new Tile("resources\\port.jpg", "Port", true, 800);
+        Tile darkForest = new Tile("resources\\dark_forest.jpg", "Dark Forest", false, 0);
+        Tile tower = new Tile("resources\\tower.jpg", "Tower", true, 900);
+        Tile walledCity = new Tile("resources\\walled_city.jpg", "Walled City", true, 1000);
+        Tile dungeon = new Tile("resources\\dungeon.jpg", "Dungeon", false, 0);
+        Tile riverTribe = new Tile("resources\\river_tribe.jpg", "River Tribe", true, 1100);
+        Tile forestTribe = new Tile("resources\\forest_tribe.jpg", "Forest Tribe", true, 1300);
+        Tile desertTribe = new Tile("resources\\desert_tribe.jpg", "Desert Tribe", true, 1500);
+        Tile warPost = new Tile("resources\\war_post.jpg", "War Post", true, 1700);
+        Tile darkCastle = new Tile("resources\\dark_castle.jpg", "Dark Castle", true, 1900);
+        Tile wildlands = new Tile("resources\\wildlands.jpg", "Wildlands", false, 0);
+        Tile mountainVillage = new Tile("resources\\mountain_village.jpg", "Mountain Village", true, 2000);
+        Tile mountainCastle = new Tile("resources\\mountain_castle.jpg", "Mountain Castle", true, 2200);
+        Tile highlands = new Tile("resources\\highlands.jpg", "Highlands", false, 0);
+        Tile capitalCity = new Tile("resources\\capital_city.jpg", "Capital City", true, 2500);
+        Tile kingsCastle = new Tile("resources\\kings_castle.jpg", "Kings Castle", true, 3000);
         
         topRow.getChildren().addAll(throneRoom, kingsCastle, capitalCity, highlands, mountainCastle, mountainVillage, wildlands);
-        tiles[0] = throneRoom;
-        tiles[23] = kingsCastle;
-        tiles[22] = capitalCity;
-        tiles[21] = highlands;
-        tiles[20] = mountainCastle;
-        tiles[19] = mountainVillage;
-        tiles[18] = wildlands;
-    }
-    public static void setBottomTiles(HBox bottomRow, Tile[] tiles)
-    {
-        Tile mercenaryCamp = new Tile("resources\\mercenary_camp.jpg", "Mercenary Camp");
-        Tile lighthouse = new Tile("resources\\lighthouse.jpg", "Lighthouse");
-        Tile port = new Tile("resources\\port.jpg", "Port");
-        Tile darkForest = new Tile("resources\\dark_forest.jpg", "Dark Forest");
-        Tile tower = new Tile("resources\\tower.jpg", "Tower");
-        Tile walledCity = new Tile("resources\\walled_city.jpg", "Walled City");
-        Tile dungeon = new Tile("resources\\dungeon.jpg", "Dungeon");
-        
         bottomRow.getChildren().addAll(mercenaryCamp, lighthouse, port, darkForest, tower, walledCity, dungeon);
+        leftColumn.getChildren().addAll(smallFarm, wheatField, windmill, inn, smallTown);
+        rightColumn.getChildren().addAll(darkCastle, warPost, desertTribe, forestTribe, riverTribe);
+        
+        tiles[0] = throneRoom;
+        tiles[1] = smallFarm;
+        tiles[2] = wheatField;
+        tiles[3] = windmill;
+        tiles[4] = inn;
+        tiles[5] = smallTown;
         tiles[6] = mercenaryCamp;
         tiles[7] = lighthouse;
         tiles[8] = port;
@@ -99,36 +104,17 @@ public class Medivopoly extends Application
         tiles[10] = tower;
         tiles[11] = walledCity;
         tiles[12] = dungeon;
-    }
-    public static void setLeftTiles(VBox leftColumn, Tile[] tiles)
-    {
-        Tile smallFarm = new Tile("resources\\small_farm.jpg", "Small Farm");
-        Tile wheatField = new Tile("resources\\wheat_field.jpg", "Wheat Field");
-        Tile windmill = new Tile("resources\\windmill.jpg", "Windmill");
-        Tile inn = new Tile("resources\\inn.jpg", "Inn");
-        Tile smallTown = new Tile("resources\\small_town.jpg", "Small Town");
-        
-        leftColumn.getChildren().addAll(smallFarm, wheatField, windmill, inn, smallTown);
-        tiles[1] = smallFarm;
-        tiles[2] = wheatField;
-        tiles[3] = windmill;
-        tiles[4] = inn;
-        tiles[5] = smallTown;
-    }
-    public static void setRightTiles(VBox rightColumn, Tile[] tiles)
-    {
-        Tile darkCastle = new Tile("resources\\dark_castle.jpg", "Dark Castle");
-        Tile warPost = new Tile("resources\\war_post.jpg", "War Post");
-        Tile desertTribe = new Tile("resources\\desert_tribe.jpg", "Desert Tribe");
-        Tile forestTribe = new Tile("resources\\forest_tribe.jpg", "Forest Tribe");
-        Tile riverTribe = new Tile("resources\\river_tribe.jpg", "River Tribe");
-        
-        rightColumn.getChildren().addAll(darkCastle, warPost, desertTribe, forestTribe, riverTribe);
         tiles[17] = darkCastle;
         tiles[16] = warPost;
         tiles[15] = desertTribe;
         tiles[14] = forestTribe;
         tiles[13] = riverTribe;
+        tiles[23] = kingsCastle;
+        tiles[22] = capitalCity;
+        tiles[21] = highlands;
+        tiles[20] = mountainCastle;
+        tiles[19] = mountainVillage;
+        tiles[18] = wildlands;
     }
     public static void main(String[] args)
     {

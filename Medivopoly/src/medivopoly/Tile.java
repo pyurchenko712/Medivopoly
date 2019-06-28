@@ -7,6 +7,7 @@
  */
 package medivopoly;
 
+import javafx.scene.text.Font;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
@@ -16,6 +17,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javax.swing.text.StyleContext;
 
 /**
  *
@@ -23,9 +25,11 @@ import javafx.scene.layout.HBox;
  */
 public class Tile extends BorderPane
 {
-    Image image;
-    String name;
-    public Tile(String file, String name)
+    private Image image;
+    private String name;
+    private Boolean canBuy;
+    private int cost;
+    public Tile(String file, String name, Boolean canBuy, int cost)
     {
         super();
         FileInputStream inputstream = null;
@@ -40,6 +44,7 @@ public class Tile extends BorderPane
         ImageView imageView = new ImageView(image);
         this.name = name;
         Label nameLabel = new Label(name);
+        nameLabel.setFont(new Font("Arial", 20));
         HBox tileCont = new HBox();
         //tileCont.getChildren().addAll(imageView, nameLabel);
         this.setCenter(imageView);
